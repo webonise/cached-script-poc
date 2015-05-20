@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Once and Cached Script POC</title>
+    <style>
+      .block {
+      background-color: blue;
+      width: 150px;
+      height: 70px;
+      margin: 10px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="js/custom.js"></script>
+  </head>
+  <body>
+    <p>
+      Following is a very high level POC on Caching a script while fetching it in a deferred manner and Implementation of _.once with Javascript.
+      The phenonmenon behing 'once' function is that it creates a version of the function that can only be called one time.
+      Repeated calls to the modified function will have no effect,
+      returning the value from the original call.
+    </p>
+    <p>
+      When any button is clicked after page load for the first time, it would fetch the jQuery color plugin js and thus would implement the transition effect with the help of fetched plugin.
+      The next time any button is clicked, it would directly execute the transition, without fetching the javascript. Though, in the javascript code, it is visible that the same function is being called. This is feasible due to implementation of 'once'
+    </p>
+    <p>
+      The cachedScript function allows fetching of remote javascript and caches it for further execution. So even when we reload the page, no call would be made to fetch the Javascript
+      Referred from <a href='https://api.jquery.com/jquery.getscript/#caching-requests'>jQuery API Docs</a>
+    </p>
+    <p>
+      This is a combined implementation of CachedScript and Once
+    </p>
+    <button id="fetchOnce">&raquo; Change Block Red</button>
+    <button id="changeOlive">&raquo; Change Block Olive</button>
+    <button id="changeBlack">&raquo; Change Block Black</button>
+    <div class="block"></div>
+  </body>
+</html>
